@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         elevation: 4,
         backgroundColor: AppColors.neutralWhite,
-        shadowColor: Colors.grey,
+        shadowColor: AppColors.neutralGrey,
 
         // AppBar configuration.
         leading: Builder(
@@ -27,7 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (BuildContext context) {
             return IconButton(
               // Menu icon button to open the drawer.
-              icon: const Icon(Icons.menu),
+              icon: const Icon(
+                Icons.menu,
+                color: AppColors.primaryRed,
+              ),
               onPressed: () => Scaffold.of(context).openDrawer(),
               // Opens the drawer.
             );
@@ -35,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.,
           children: [
             Image.asset(
               'assets/images/rashanow2.png', // Logo or image asset.
@@ -51,15 +55,27 @@ class _HomeScreenState extends State<HomeScreen> {
           // Action buttons on the AppBar.
           IconButton(
             onPressed: () {}, // Placeholder callback for location button.
-            icon: const Icon(Icons.my_location_outlined),
+            icon: const Icon(
+              size: 28,
+              Icons.my_location_outlined,
+              color: AppColors.primaryGreen,
+            ),
           ),
           IconButton(
             onPressed: () {}, // Placeholder callback for notifications button.
-            icon: const Icon(Icons.notifications),
+            icon: const Icon(
+              size: 28,
+              Icons.notifications,
+              color: AppColors.primaryGreen,
+            ),
           ),
           IconButton(
             onPressed: () {}, // Placeholder callback for search button.
-            icon: const Icon(Icons.search),
+            icon: const Icon(
+              size: 28,
+              Icons.search,
+              color: AppColors.primaryGreen,
+            ),
           ),
         ],
       ),
@@ -92,8 +108,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderSide: BorderSide.none,
                     ),
                     filled: true,
-                    fillColor:
-                        Colors.white, // White background for the TextField
+                    fillColor: AppColors
+                        .neutralWhite, // White background for the TextField
                     contentPadding: EdgeInsets.fromLTRB(12, 12, 48,
                         12), // Adjust padding to make space for the mic button
                   ),
@@ -111,7 +127,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   child: IconButton(
-                    icon: const Icon(Icons.mic),
+                    icon: const Icon(
+                      Icons.mic,
+                      color: AppColors.primaryGreen,
+                    ),
                     onPressed: () {
                       // Implement microphone action
                     },

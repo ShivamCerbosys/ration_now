@@ -26,7 +26,7 @@ class ListTileWidget extends StatelessWidget {
       ), // Leading icon with color.
       title: Text(
         title,
-        style: const TextStyle(color: AppColors.primaryGreen),
+        style: const TextStyle(color: AppColors.primaryGreen, fontSize: 24),
       ), // Text title with style.
       onTap: () {
         Navigator.pop(context); // Navigates back on tap.

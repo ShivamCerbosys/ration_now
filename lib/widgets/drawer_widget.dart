@@ -92,7 +92,7 @@ class DrawerWidget extends StatelessWidget {
           const Divider(
             // Divider to visually separate content sections.
             height: 3,
-            color: AppColors.neutralBlack400,
+            color: AppColors.neutralBlack,
           ),
           const ListTile(
             // ListTile for the 'Language' label.
