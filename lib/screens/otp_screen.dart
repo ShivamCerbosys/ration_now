@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 // Importing the HomeScreen to navigate after successful OTP verification.
 import 'package:ration_now/screens/homescreen.dart';
 
+import 'package:ration_now/utils/utils.dart';
+
 // Defining OtpScreen as a StatefulWidget to handle dynamic changes.
 class OtpScreen extends StatefulWidget {
   const OtpScreen({
@@ -18,6 +20,7 @@ class OtpScreen extends StatefulWidget {
 
 // State class for OtpScreen.
 class _OtpScreenState extends State<OtpScreen> {
+  final _otpController = TextEditingController();
   // Variables to manage the countdown timer for OTP.
   int minutes = 4;
   int seconds = 0;
@@ -30,11 +33,22 @@ class _OtpScreenState extends State<OtpScreen> {
 
   // Method to handle 'CONTINUE' button click, navigating to HomeScreen.
   void onClickContinue() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (ctx) => const HomeScreen(),
-      ),
-    );
+    final otp = _otpController.text.trim();
+    if (otp.length < 6) {
+      // Show a Snackbar if the entered phone number is less than 10 digits.
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter a valid OTP.'),
+        ),
+      );
+    } else {
+      timer.cancel();
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (ctx) => const HomeScreen(),
+        ),
+      );
+    }
   }
 
   // Method to navigate back to the previous screen.
@@ -76,14 +90,20 @@ class _OtpScreenState extends State<OtpScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(height: 40),
-          const Text('OTP', style: TextStyle(fontSize: 20)),
+          const Text(
+            AppLabels.otpText,
+            style: TextStyle(fontSize: 20),
+          ),
           // TextField for OTP input.
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: SizedBox(
               width: 250,
               child: TextField(
-                decoration: InputDecoration(
+                maxLength: 6,
+                controller: _otpController,
+                decoration: const InputDecoration(
+                  counterText: '',
                   labelText: 'OTP',
                   border: OutlineInputBorder(),
                 ),
@@ -109,7 +129,7 @@ class _OtpScreenState extends State<OtpScreen> {
               TextButton(
                 onPressed: onClickEdit,
                 child: const Text(
-                  'Edit',
+                  AppLabels.editButtonText,
                 ),
               ),
             ],
@@ -133,10 +153,10 @@ class _OtpScreenState extends State<OtpScreen> {
                     // Welcome text and placeholder images.
                     Container(
                       margin: const EdgeInsets.only(top: 10),
-                      child: Text(
+                      child: const Text(
                         'Welcome',
                         style: TextStyle(
-                          color: Colors.green[800],
+                          color: AppColors.primaryGreen,
                           fontSize: 28,
                         ),
                       ),
@@ -159,10 +179,10 @@ class _OtpScreenState extends State<OtpScreen> {
                       width: 300,
                       height: 50,
                       child: TextButton(
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(Colors.green[800]),
-                          shape: const MaterialStatePropertyAll(
+                              MaterialStatePropertyAll(AppColors.primaryGreen),
+                          shape: MaterialStatePropertyAll(
                             ContinuousRectangleBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(10),
@@ -172,9 +192,9 @@ class _OtpScreenState extends State<OtpScreen> {
                         ),
                         onPressed: onClickContinue,
                         child: const Text(
-                          'CONTINUE',
+                          AppLabels.continueButtonText,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: AppColors.neutralWhite,
                           ),
                         ),
                       ),
@@ -184,7 +204,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     const SizedBox(
                       width: 250,
                       child: Text(
-                        'By continuing, you agree to accept our Privacy Policy & Terms of Service',
+                        AppLabels.footerText,
                         textAlign: TextAlign.center,
                       ),
                     )

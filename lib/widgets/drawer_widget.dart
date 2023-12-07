@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ration_now/utils/utils.dart';
 import 'package:ration_now/widgets/listtile_widget.dart'; // Import custom ListTile widget.
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({super.key}); // Constructor with optional key.
+  const DrawerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Main build method for the DrawerWidget.
     return Drawer(
       // The Drawer widget provides a slide-in menu.
       child: ListView(
@@ -63,48 +63,48 @@ class DrawerWidget extends StatelessWidget {
           // Custom ListTile widgets for various drawer options.
           const ListTileWidget(
             icon: Icons.home,
-            title: 'Home',
+            title: AppLabels.homeText,
           ),
           const ListTileWidget(
             icon: Icons.shopping_cart,
-            title: 'My Orders',
+            title: AppLabels.orderText,
           ),
           const ListTileWidget(
             icon: Icons.location_on,
-            title: 'My Address',
+            title: AppLabels.addressText,
           ),
           const ListTileWidget(
             icon: Icons.settings,
-            title: 'Settings',
+            title: AppLabels.settingText,
           ),
           const ListTileWidget(
             icon: Icons.share,
-            title: 'Share the app',
+            title: AppLabels.shareText,
           ),
           const ListTileWidget(
             icon: Icons.info,
-            title: 'About us',
+            title: AppLabels.aboutText,
           ),
           const ListTileWidget(
             icon: Icons.power_settings_new_outlined,
-            title: 'Logout',
+            title: AppLabels.logoutText,
           ),
-          Divider(
+          const Divider(
             // Divider to visually separate content sections.
-            height: 2,
-            color: Colors.grey[800],
+            height: 3,
+            color: AppColors.neutralBlack400,
           ),
           const ListTile(
             // ListTile for the 'Language' label.
             visualDensity: VisualDensity(vertical: -4),
             title: Text(
-              'Language', // Language display.
-              style: TextStyle(color: Colors.grey, fontSize: 18),
+              AppLabels.languageText, // Language display.
+              style: TextStyle(color: AppColors.neutralGrey, fontSize: 18),
             ),
           ),
           const ListTileWidget(
             icon: Icons.g_translate,
-            title: 'हिंदी ',
+            title: AppLabels.hindiText,
           ), // ListTile for language selection.
         ],
       ),

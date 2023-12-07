@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // Importing the OTP screen to navigate after successful login.
 import 'package:ration_now/screens/otp_screen.dart';
+import 'package:ration_now/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -130,9 +131,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Welcome text.
                   Container(
                     margin: const EdgeInsets.only(top: 10),
-                    child: Text('Welcome',
-                        style:
-                            TextStyle(color: Colors.green[800], fontSize: 28)),
+                    child: const Text(
+                      AppLabels.welcomeText,
+                      style: TextStyle(
+                          color: AppColors.primaryGreen, fontSize: 28),
+                    ),
                   ),
                   // Placeholder images, assumed to be logos or relevant graphics.
                   Image.asset(
@@ -155,18 +158,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 300,
                     height: 50,
                     child: TextButton(
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
                         backgroundColor:
-                            MaterialStatePropertyAll(Colors.green[800]),
-                        shape: const MaterialStatePropertyAll(
+                            MaterialStatePropertyAll(AppColors.primaryGreen),
+                        shape: MaterialStatePropertyAll(
                           ContinuousRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
                         ),
                       ),
                       onPressed: onClickContinue,
-                      child: const Text('CONTINUE',
-                          style: TextStyle(color: Colors.white)),
+                      child: const Text(
+                        AppLabels.continueButtonText,
+                        style: TextStyle(color: AppColors.neutralWhite),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -174,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     width: 250,
                     child: Text(
-                      'By continuing, you agree to accept our Privacy Policy & Terms of Service',
+                      AppLabels.footerText,
                       textAlign: TextAlign.center,
                     ),
                   )

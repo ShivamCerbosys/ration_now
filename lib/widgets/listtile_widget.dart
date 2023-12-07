@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ration_now/utils/utils.dart';
 
 // Custom ListTile widget.
 class ListTileWidget extends StatelessWidget {
@@ -21,11 +22,11 @@ class ListTileWidget extends StatelessWidget {
           const VisualDensity(vertical: -2.5), // Sets the visual density.
       leading: Icon(
         icon,
-        color: Colors.red[800],
+        color: AppColors.primaryRed,
       ), // Leading icon with color.
       title: Text(
         title,
-        style: TextStyle(color: Colors.green[800]),
+        style: const TextStyle(color: AppColors.primaryGreen),
       ), // Text title with style.
       onTap: () {
         Navigator.pop(context); // Navigates back on tap.

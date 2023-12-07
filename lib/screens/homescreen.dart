@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ration_now/utils/utils.dart';
 import 'package:ration_now/widgets/drawer_widget.dart'; // Custom drawer widget import.
 
 class HomeScreen extends StatefulWidget {
@@ -15,9 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 4,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.neutralWhite,
         shadowColor: Colors.grey,
-        
+
         // AppBar configuration.
         leading: Builder(
           // Builder used to provide context for Scaffold.of.
@@ -39,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const Text(
               'addresssss......', // Additional text, possibly an address.
-              style:
-                  TextStyle(fontSize: 14, color: Colors.grey), // Text styling.
+              style: TextStyle(
+                  fontSize: 14, color: AppColors.neutralGrey), // Text styling.
             )
           ],
         ),
@@ -61,65 +62,65 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: const DrawerWidget(),
-      body: Column(children: [
-        Container(
-          margin: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 2,
-                blurRadius: 7,
-                offset: const Offset(0, 3), // changes position of shadow
-              ),
-            ],
-          ),
-          // padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Stack(
-            alignment: Alignment.centerRight,
-            children: [
-              const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search for products, brands',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+      body: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.neutralGrey.withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            // padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Stack(
+              alignment: Alignment.centerRight,
+              children: [
+                const TextField(
+                  decoration: InputDecoration(
+                    hintText: AppLabels.searchBarText,
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      borderSide: BorderSide.none,
                     ),
-                    // borderRadius: BorderRadius.only(
-                    //   bottomLeft: Radius.circular(10),
-                    //   topLeft: Radius.circular(10),
-                    // ),
-                    borderSide: BorderSide.none,
+                    filled: true,
+                    fillColor:
+                        Colors.white, // White background for the TextField
+                    contentPadding: EdgeInsets.fromLTRB(12, 12, 48,
+                        12), // Adjust padding to make space for the mic button
                   ),
-                  filled: true,
-                  fillColor: Colors.white, // White background for the TextField
-                  contentPadding: EdgeInsets.fromLTRB(12, 12, 48,
-                      12), // Adjust padding to make space for the mic button
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                    right:
-                        0), // Slight margin to align the button inside the TextField
-                decoration: BoxDecoration(
-                  color:
-                      Colors.grey[200], // Slight grey background for mic button
-                  borderRadius: const BorderRadius.only(
+                Container(
+                  margin: const EdgeInsets.only(
+                      right:
+                          0), // Slight margin to align the button inside the TextField
+                  decoration: BoxDecoration(
+                    color: Colors
+                        .grey[200], // Slight grey background for mic button
+                    borderRadius: const BorderRadius.only(
                       bottomRight: Radius.circular(10),
-                      topRight: Radius.circular(10)),
+                      topRight: Radius.circular(10),
+                    ),
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.mic),
+                    onPressed: () {
+                      // Implement microphone action
+                    },
+                  ),
                 ),
-                child: IconButton(
-                  icon: const Icon(Icons.mic),
-                  onPressed: () {
-                    // Implement microphone action
-                  },
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ) // Drawer widget defined in a separate file.
-      ]),
+        ],
+      ),
     );
   }
 }
