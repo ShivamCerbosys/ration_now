@@ -38,7 +38,7 @@ class _OtpScreenState extends State<OtpScreen> {
       // Show a Snackbar if the entered phone number is less than 10 digits.
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please enter a valid OTP.'),
+          content: Text(AppLabels.otpSnackbar),
         ),
       );
     } else {
@@ -104,7 +104,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 controller: _otpController,
                 decoration: const InputDecoration(
                   counterText: '',
-                  labelText: 'OTP',
+                  labelText: AppLabels.enterOTPText,
                   border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.phone,

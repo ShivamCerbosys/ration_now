@@ -21,7 +21,16 @@ class AppLabels {
   static const otpText = 'OTP';
   static const footerText =
       'By continuing, you agree to accept our Privacy Policy & Terms of Service';
+
+  //TEXTFEILD TEXTS
   static const searchBarText = 'Search for products, brands';
+  static const enterPhoneText = 'Enter Mobile No.';
+  static const enterOTPText = 'Enter OTP';
+  //SnackBart Text
+
+  static const otpSnackbar = 'Please enter a valid OTP.';
+  static const mobileSnackbar =
+      'Please enter a valid phone number with at least 10 digits.';
 
   // Button labels
   static const continueButtonText = 'CONTINUE';

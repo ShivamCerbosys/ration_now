@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ration_now/utils/utils.dart';
-import 'package:ration_now/widgets/drawer_widget.dart'; // Custom drawer widget import.
+// Custom drawer widget import.
+import 'package:ration_now/widgets/drawer_widget.dart';
+// import 'package:ration_now/widgets/promo_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key}); // Constructor with optional key.
@@ -119,6 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          // const PromoWidget()
         ],
       ),
     );

@@ -40,7 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-              'Please enter a valid phone number with at least 10 digits.'),
+            AppLabels.mobileSnackbar,
+          ),
         ),
       );
     } else {
@@ -66,7 +67,11 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Padding(
               padding: EdgeInsets.all(16.0),
-              child: Text('Phone', textAlign: TextAlign.start),
+              child: Text(
+                'Phone',
+                textAlign: TextAlign.start,
+                style: TextStyle(fontSize: 16),
+              ),
             ),
           ],
         ),
@@ -86,11 +91,11 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: _isFocused
                   ? const InputDecoration(
                       counterText: '',
-                      prefixText: '+91',
+                      prefixText: '+91  ',
                       labelText: "Enter phone no.",
                       border: OutlineInputBorder(),
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                          EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                     )
                   : const InputDecoration(
                       counterText: '',
@@ -98,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           Text("+91"),
                           SizedBox(width: 10),
-                          Text('Enter phone no.'),
+                          Text(AppLabels.enterPhoneText),
                         ],
                       ),
                       border: OutlineInputBorder(),
