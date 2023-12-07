@@ -6,7 +6,11 @@ import 'package:ration_now/screens/homescreen.dart';
 
 // Defining OtpScreen as a StatefulWidget to handle dynamic changes.
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key});
+  const OtpScreen({
+    super.key,
+    required this.number,
+  });
+  final String number;
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();
@@ -96,9 +100,9 @@ class _OtpScreenState extends State<OtpScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                '989-989-9999',
-                style: TextStyle(
+              Text(
+                widget.number,
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
@@ -116,73 +120,76 @@ class _OtpScreenState extends State<OtpScreen> {
     );
 
     // Building the main Scaffold of the OTP screen.
-    return GestureDetector(
-      onTap: handleTap,
-      child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  // Welcome text and placeholder images.
-                  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                    child: Text(
-                      'Welcome',
-                      style: TextStyle(
-                        color: Colors.green[800],
-                        fontSize: 28,
+    return PopScope(
+      canPop: false,
+      child: GestureDetector(
+        onTap: handleTap,
+        child: Scaffold(
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    // Welcome text and placeholder images.
+                    Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      child: Text(
+                        'Welcome',
+                        style: TextStyle(
+                          color: Colors.green[800],
+                          fontSize: 28,
+                        ),
                       ),
                     ),
-                  ),
-                  Image.asset(
-                    'assets/images/rashannow.png',
-                    height: 200,
-                    width: 200,
-                  ),
-                  const SizedBox(height: 12),
-                  Image.asset(
-                    'assets/images/rashanow2.png',
-                    height: 40,
-                    width: 250,
-                  ),
-                  // Adding the main content.
-                  content,
-                  // 'CONTINUE' button.
-                  SizedBox(
-                    width: 300,
-                    height: 50,
-                    child: TextButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStatePropertyAll(Colors.green[800]),
-                        shape: const MaterialStatePropertyAll(
-                          ContinuousRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
+                    Image.asset(
+                      'assets/images/rashannow.png',
+                      height: 200,
+                      width: 200,
+                    ),
+                    const SizedBox(height: 12),
+                    Image.asset(
+                      'assets/images/rashanow2.png',
+                      height: 40,
+                      width: 250,
+                    ),
+                    // Adding the main content.
+                    content,
+                    // 'CONTINUE' button.
+                    SizedBox(
+                      width: 300,
+                      height: 50,
+                      child: TextButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.green[800]),
+                          shape: const MaterialStatePropertyAll(
+                            ContinuousRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      onPressed: onClickContinue,
-                      child: const Text(
-                        'CONTINUE',
-                        style: TextStyle(
-                          color: Colors.white,
+                        onPressed: onClickContinue,
+                        child: const Text(
+                          'CONTINUE',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  // Footer text regarding privacy policy and terms of service.
-                  const SizedBox(
-                    width: 250,
-                    child: Text(
-                      'By continuing, you agree to accept our Privacy Policy & Terms of Service',
-                      textAlign: TextAlign.center,
-                    ),
-                  )
-                ],
+                    const SizedBox(height: 20),
+                    // Footer text regarding privacy policy and terms of service.
+                    const SizedBox(
+                      width: 250,
+                      child: Text(
+                        'By continuing, you agree to accept our Privacy Policy & Terms of Service',
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

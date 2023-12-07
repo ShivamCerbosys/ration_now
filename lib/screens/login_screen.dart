@@ -34,7 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
   // Method to handle 'CONTINUE' button click, navigating to OtpScreen.
   void onClickContinue() {
     final phoneNumber = _numberController.text.trim();
-
     if (phoneNumber.length < 10) {
       // Show a Snackbar if the entered phone number is less than 10 digits.
       ScaffoldMessenger.of(context).showSnackBar(
@@ -47,7 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
       // Navigate to the OTP screen only if the phone number is valid.
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (ctx) => const OtpScreen(),
+          builder: (ctx) => OtpScreen(
+            number: phoneNumber,
+          ),
         ),
       );
     }
@@ -91,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                     )
                   : const InputDecoration(
-                    counterText: '',
+                      counterText: '',
                       label: Row(
                         children: [
                           Text("+91"),
@@ -99,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Text('Enter phone no.'),
                         ],
                       ),
-                      border:OutlineInputBorder(),
+                      border: OutlineInputBorder(),
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                       prefix: Row(
